@@ -1,0 +1,80 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>7</zoom_level><element><id>UMLClass</id><coordinates><x>451</x><y>357</y><w>210</w><h>77</h></coordinates><panel_attributes>RegistroTop10
+--
+- nombre: String
+- puntos: int
+--
+//+ registroTop10(String nombre, int puntos): void
++ darPuntos(): int
++ darNombre(): String
++ toString(): String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>220</x><y>343</y><w>147</w><h>140</h></coordinates><panel_attributes>Tablero
+--
+- tablero: boolean[][]
+- tablero_original: boolean[][]
+- jugadas: int
+--
++ reiniciar (): void
++ salvar_tablero(): void
++ desordenar(int dificultad): void
++ darJugadas(): int
++ darTablero(): boolean[][]
++ jugar(): void
++ tableroIluminado(): boolean
++ calcularPuntaje(): int</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>388</x><y>560</y><w>168</w><h>77</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**salvar_tablero()**
+
+Copia el tablero actual sobre la matriz 
+tablero_original</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>388</x><y>476</y><w>168</w><h>77</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**reiniciar()**
+
+Reinicia el tablero para que las casillas
+tengan los valores almacenados en 
+tablero_original.
+
+Deja la cantidad de jugadas con valor 0.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>213</x><y>497</y><w>168</w><h>140</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**desordenar(int dificultad)**
+
+Desordena el tablero realizando una
+serie de jugadas sobre posiciones
+aleatorias. Si antes de ejecutar este
+método el tablero estaba todo iluminado,
+esto garantiza que se vaya a poder
+resolver después.
+
+El número de jugadas realizadas se
+mantiene constante</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>38</x><y>539</y><w>168</w><h>98</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**jugar(int fila, int columna)**
+
+Cambia el estado de una casilla y el
+estado de las casillas que la rodean. Las 
+iluminadas se apagan y viceversa. 				 				 
+Incrementa en 1 el número de jugadas
+realizadas hasta el momento.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>38</x><y>469</y><w>168</w><h>63</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**tableroIluminado()**
+
+Informa si todas las casillas del tablero
+están iluminadas</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>451</x><y>203</y><w>210</w><h>98</h></coordinates><panel_attributes>Top10
+--
+- registros: PriorityQueue&lt;RegistroTop10&gt;
+- peorPuntaje: int
+--
++ esTop10(int puntaje): boolean
++ agregarRegistro(String nombre, int puntaje): void
++ darRegistros(): Collection&lt;RegistroTop10&gt;
++ salvarRecords(File archivo): void
++ cargarRecords(File archivo): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>472</x><y>133</y><w>168</w><h>63</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**esTop10(int puntaje)**
+
+Indica si el puntaje indicado es suficiente
+para entrar al top10</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>472</x><y>63</y><w>168</w><h>63</h></coordinates><panel_attributes>bg=#ffb0fe
+
+**salvarRecords(File archivo)**
+**cargarRecords(File archivo)**
+
+Persistencia</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>549</x><y>294</y><w>21</w><h>77</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element></diagram>
