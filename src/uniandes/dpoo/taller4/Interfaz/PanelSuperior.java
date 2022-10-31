@@ -58,7 +58,20 @@ public class PanelSuperior extends JPanel implements ItemListener{
 	public void itemStateChanged(ItemEvent e) {
         if (e.getSource()==comboBox) {
             String seleccionado=(String)comboBox.getSelectedItem();
-           
-        }
+			int x;
+			if (seleccionado.equals("3x3")) 
+			{
+				x = 3;
+        	}
+			else if (seleccionado.equals("5x5"))
+			{
+				x = 5;
+			}
+			else
+			{
+				x = 8;
+			}
+			PanelJuego panelJuego = new PanelJuego(x);
+		}
 	}
 }

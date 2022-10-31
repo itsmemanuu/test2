@@ -11,12 +11,14 @@ public class InterfazLightsOut extends JFrame
 	private Top10 top;
 	
 	private JPanel ventana;
+	private PanelJuego panelJuego;
 	private PanelSuperior panelSuperior;
 	
 	public InterfazLightsOut(RegistroTop10 registro, Tablero tablero, Top10 top) {
 		
 		ventana = new JPanel();
 		panelSuperior = new PanelSuperior();
+
 		
 		ventana.setLayout(new BorderLayout());
 		add(panelSuperior, BorderLayout.NORTH);
