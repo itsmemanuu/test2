@@ -47,18 +47,21 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     public void actionPerformed(ActionEvent e) {
         this.sizeTablero = panelSuperior.getSizeTablero();
         if (e.getActionCommand().equals("Nuevo")) {
-            Tablero tablero = new Tablero(sizeTablero);
-            tableroActual = tablero.darTablero();
+            this.tablero = new Tablero(sizeTablero);
+            this.tableroActual = tablero.darTablero();
+            tablero.desordenar(panelSuperior.getDificultadTablero());
 			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual);
 			interfaz.agregarPanel(panelJuego);
+            revalidate();
             repaint();
 		}
-		else if (e.getActionCommand().equals("Reiniciar") && tableroActual != null) {
+		else if (e.getActionCommand().equals("Reiniciar") && tablero != null && tableroActual != null) {
             this.tablero.reiniciar();
             tableroActual = tablero.darTablero();
 			System.out.println("Reiniciar");
 			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual);
 			interfaz.agregarPanel(panelJuego);
+            revalidate();
             repaint();
 		}
         
@@ -71,4 +74,61 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     }
     
     
+
+    /**
+     * @return Tablero return the tablero
+     */
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    /**
+     * @param tablero the tablero to set
+     */
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    /**
+     * @return boolean[][] return the tableroActual
+     */
+    public boolean[][] getTableroActual() {
+        return tableroActual;
+    }
+
+    /**
+     * @param tableroActual the tableroActual to set
+     */
+    public void setTableroActual(boolean[][] tableroActual) {
+        this.tableroActual = tableroActual;
+    }
+
+    /**
+     * @return PanelSuperior return the panelSuperior
+     */
+    public PanelSuperior getPanelSuperior() {
+        return panelSuperior;
+    }
+
+    /**
+     * @param panelSuperior the panelSuperior to set
+     */
+    public void setPanelSuperior(PanelSuperior panelSuperior) {
+        this.panelSuperior = panelSuperior;
+    }
+
+    /**
+     * @return InterfazLightsOut return the interfaz
+     */
+    public InterfazLightsOut getInterfaz() {
+        return interfaz;
+    }
+
+    /**
+     * @param interfaz the interfaz to set
+     */
+    public void setInterfaz(InterfazLightsOut interfaz) {
+        this.interfaz = interfaz;
+    }
+
 }

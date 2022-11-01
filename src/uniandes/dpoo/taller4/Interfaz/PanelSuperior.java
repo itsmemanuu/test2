@@ -18,7 +18,8 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 	private JRadioButton medio;
 	private JRadioButton dificil;
 	private InterfazLightsOut interfaz;
-	private int sizeTablero = 3;
+	private int sizeTablero;
+	private int dificultadTablero;
 	
 	/**
 	 * @param interfaz
@@ -28,7 +29,7 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		
 		this.size = new JLabel("Tamaño: ");
 		size.setBorder(new LineBorder(Color.DARK_GRAY));
-				
+		
 		this.comboBox = new JComboBox<String>();
 		comboBox.setBounds(10,10,80,20);
 		comboBox.addItem("3x3");
@@ -62,25 +63,21 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		add(facil);
 		add(medio);
 		add(dificil);
-
+		
+		this.sizeTablero = 3;
+		this.dificultadTablero = sizeTablero*sizeTablero/4;
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		
 		if (facil.isSelected()) {
-			int cantidad = sizeTablero*sizeTablero/4;
-			Tablero iluminados = new Tablero(sizeTablero);
-			iluminados.desordenar(cantidad);
+			this.dificultadTablero = sizeTablero*sizeTablero/4;
 		}
-		if (medio.isSelected()) {
-			int cantidad = sizeTablero*sizeTablero/3;
-			Tablero iluminados = new Tablero(sizeTablero);
-			iluminados.desordenar(cantidad);
+		else if (medio.isSelected()) {
+			this.dificultadTablero = sizeTablero*sizeTablero/3;
 		}
-		if (dificil.isSelected()) {
-			int cantidad = sizeTablero*sizeTablero/2;
-			Tablero iluminados = new Tablero(sizeTablero);
-			iluminados.desordenar(cantidad);
+		else if (dificil.isSelected()) {
+			this.dificultadTablero = sizeTablero*sizeTablero/2;
 		}
 	}
 
@@ -107,4 +104,8 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
     public int getSizeTablero() {
         return this.sizeTablero;
     }
+
+	public int getDificultadTablero() {
+		return this.dificultadTablero;
+	}
 }
