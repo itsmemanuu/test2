@@ -39,8 +39,8 @@ public class PruebaTablero extends JPanel{
                 {
                     h.drawImage(apagado.getImage(), i*casilla, j*casilla, casilla, casilla, this);
                 }
-                h.setColor(Color();
-                h.drawRect(i*casilla, j*casilla, casilla, casilla);
+                // h.setColor(new Color(14, 0, 54));
+                // h.drawRect(i*casilla, j*casilla, casilla, casilla);
             }
         }
     }
