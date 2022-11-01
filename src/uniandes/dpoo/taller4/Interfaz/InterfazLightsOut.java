@@ -29,11 +29,15 @@ public class InterfazLightsOut extends JFrame
 		this.setTitle("LightsOut");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.juegoIniciado = false;
+
+		PanelIzq botonesPanel = new PanelIzq(panelSuperior, this);
+		add(botonesPanel, BorderLayout.EAST);
+
 	}
 	
 	public void agregarPanel(JPanel panelJuego) {
 		this.panelJuego = panelJuego;
-		add(panelJuego, BorderLayout.WEST);
+		add(panelJuego, BorderLayout.CENTER);
 	}
 
 	public void eliminarPanel() {

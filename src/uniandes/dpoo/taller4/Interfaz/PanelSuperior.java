@@ -63,9 +63,6 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		add(medio);
 		add(dificil);
 
-		JButton boton = new JButton("Jugar");
-		add(boton);
-		boton.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -85,22 +82,6 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 			Tablero iluminados = new Tablero(sizeTablero);
 			iluminados.desordenar(cantidad);
 		}
-		if (e.getActionCommand().equals("Jugar")) {
-			Tablero iluminado = new Tablero(sizeTablero);
-			PanelJuego panelJuego = new PanelJuego(sizeTablero);
-			interfaz.agregarPanel(panelJuego);
-			JButton button = (JButton)e.getSource();
-			button.setText("Reiniciar");
-			
-			
-		}
-		else if (e.getActionCommand().equals("Reiniciar")) {
-			System.out.println("Reiniciar");
-			PanelJuego panelJuego = new PanelJuego();
-			interfaz.agregarPanel(panelJuego);
-			JButton button = (JButton)e.getSource();
-			button.setText("Jugar");
-		}
 	}
 
 	public  void itemStateChanged(ItemEvent e) {
@@ -119,8 +100,11 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 			else
 			{
 				sizeTablero = 8;
-				
 			}
 		}
 	}
+
+    public int getSizeTablero() {
+        return this.sizeTablero;
+    }
 }
