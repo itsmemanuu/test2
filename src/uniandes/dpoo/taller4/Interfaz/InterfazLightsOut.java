@@ -51,4 +51,8 @@ public class InterfazLightsOut extends JFrame
 		InterfazLightsOut interfaz = new InterfazLightsOut(null, null, null);
 		interfaz.setVisible(true);
 	}
+
+    public void agregarTablero(PruebaTablero prueba) {
+		add(prueba, BorderLayout.CENTER);
+    }
 }

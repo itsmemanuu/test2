@@ -19,31 +19,29 @@ public class PruebaTablero extends JPanel{
     }
 
     public void paintComponent(Graphics h) {
-        System.out.println("paintComponent");
         super.paintComponent(h);
         this.setBackground(Color.WHITE);
-        h.setColor(Color.PINK);
-
+        ImageIcon apagado = new ImageIcon(getClass().getResource("apagado.png"));
+        ImageIcon prendido = new ImageIcon(getClass().getResource("prendido.png"));
+        
         int width = 400;
-
+        
         int casilla = width/this.size;
-
-        h.drawRect(50, 50, casilla, casilla);
-
-        for (int i = 1; i<size; i++) {
-            for (int j = 1; j<size; j++) {
+        
+        
+        for (int i = 0; i<size; i++) {
+            for (int j = 0; j<size; j++) {
                 if (tableroActual[i][j])
                 {
-                    System.out.println("entro");
-                    h.fillRect(i*casilla, j*casilla, casilla, casilla);
+                    h.drawImage(prendido.getImage(), i*casilla, j*casilla, casilla, casilla, this);
                 }
                 else
                 {
-
-                    h.drawRect(i*casilla, j*casilla, casilla, casilla);
+                    h.drawImage(apagado.getImage(), i*casilla, j*casilla, casilla, casilla, this);
                 }
+                h.setColor(Color();
+                h.drawRect(i*casilla, j*casilla, casilla, casilla);
             }
         }
-
     }
 } 
