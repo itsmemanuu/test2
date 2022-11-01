@@ -8,7 +8,7 @@ import javax.swing.*;
 
 import uniandes.dpoo.taller4.modelo.*;
 
-public class PanelJuego extends JFrame implements MouseListener{
+public class PanelJuego extends JPanel implements MouseListener{
 
     private Tablero principal;
     private int ultima_columna;
@@ -19,14 +19,14 @@ public class PanelJuego extends JFrame implements MouseListener{
     public PanelJuego(int size) {
         this.size = size;
         JPanel paneBotones = new JPanel();
-		paneBotones.setLayout(new GridLayout(4,4,10,10));
+		paneBotones.setLayout(new GridLayout(size,size));
 		paneBotones.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
 		
 		JLabel casillas[][] = new JLabel[size][size];
 		
 		for(int i=0; i<size; i++) {
 			for(int j=0; j<size; j++) {
-				casillas[i][j] = new JLabel("alguna mierda");
+				casillas[i][j] = new JLabel("M");
 				paneBotones.add(casillas[i][j]);
 				casillas[i][j].addMouseListener(this);
 			}
