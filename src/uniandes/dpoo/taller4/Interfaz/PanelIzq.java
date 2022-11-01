@@ -51,13 +51,15 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             tableroActual = tablero.darTablero();
 			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual);
 			interfaz.agregarPanel(panelJuego);
+            repaint();
 		}
-		else if (e.getActionCommand().equals("Reiniciar")) {
-            // this.tablero.reiniciar();
+		else if (e.getActionCommand().equals("Reiniciar") && tableroActual != null) {
+            this.tablero.reiniciar();
             tableroActual = tablero.darTablero();
 			System.out.println("Reiniciar");
 			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual);
 			interfaz.agregarPanel(panelJuego);
+            repaint();
 		}
         
     }
