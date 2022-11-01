@@ -7,19 +7,25 @@ import java.awt.*;
 import java.awt.event.*;
 
 
-public class PanelSuperior extends JPanel implements ItemListener{
+public class PanelSuperior extends JPanel implements ItemListener, ActionListener{
 	
-	private JLabel tamanio;
+	private JLabel size;
 	private JComboBox<String> comboBox;
 	private JLabel dificultad;
 	private JRadioButton facil;
 	private JRadioButton medio;
 	private JRadioButton dificil;
+	private InterfazLightsOut interfaz;
+	private int sizeTablero = 3;
 	
-	public PanelSuperior() {
+	/**
+	 * @param interfaz
+	 */
+	public PanelSuperior(InterfazLightsOut interfaz) {
+		this.interfaz = interfaz;
 		
-		this.tamanio = new JLabel("Tamaño: ");
-		tamanio.setBorder(new LineBorder(Color.DARK_GRAY));
+		this.size = new JLabel("Tamaño: ");
+		size.setBorder(new LineBorder(Color.DARK_GRAY));
 				
 		this.comboBox = new JComboBox<String>();
 		comboBox.setBounds(10,10,80,20);
@@ -45,37 +51,52 @@ public class PanelSuperior extends JPanel implements ItemListener{
 		bg.add(dificil);
 		
 		setLayout(new FlowLayout());
-		add(tamanio);
+		add(size);
 		add(comboBox);
 		add(dificultad);
 		add(facil);
 		add(medio);
 		add(dificil);
-		
 
+		JButton boton = new JButton("Jugar");
+		add(boton);
+		boton.addActionListener(this);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if (e.getActionCommand().equals("Jugar")) {
+			PanelJuego panelJuego = new PanelJuego(sizeTablero);
+			interfaz.agregarPanel(panelJuego);
+			JButton button = (JButton)e.getSource();
+			button.setText("Reiniciar");
+		}
+		else if (e.getActionCommand().equals("Reiniciar")) {
+			System.out.println("Reiniciar");
+			PanelJuego panelJuego = new PanelJuego();
+			interfaz.agregarPanel(panelJuego);
+			JButton button = (JButton)e.getSource();
+			button.setText("Jugar");
+		}
 	}
 
 	public  void itemStateChanged(ItemEvent e) {
         if (e.getSource()==comboBox) {
             String seleccionado=(String)comboBox.getSelectedItem();
-			int x;
 			if (seleccionado.equals("3x3")) 
 			{
-				x = 3;
+				sizeTablero = 3;
 				
         	}
 			else if (seleccionado.equals("5x5"))
 			{
-				x = 5;
+				sizeTablero = 5;
 				
 			}
 			else
 			{
-				x = 8;
+				sizeTablero = 8;
 				
 			}
-			PanelJuego panelJuego = new PanelJuego(x);
-			InterfazLightsOut.agregarPanel(panelJuego);
 		}
 	}
 }

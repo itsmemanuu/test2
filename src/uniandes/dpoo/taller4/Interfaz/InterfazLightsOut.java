@@ -12,18 +12,17 @@ public class InterfazLightsOut extends JFrame
 	private Top10 top;
 	
 	private JPanel ventana;
-	private PanelJuego panelJuego;
+	private JPanel panelJuego;
 	private PanelSuperior panelSuperior;
+	private boolean juegoIniciado;
 	
 	public InterfazLightsOut(RegistroTop10 registro, Tablero tablero, Top10 top) {
 		
 		ventana = new JPanel();
-		panelSuperior = new PanelSuperior();
-		panelJuego = new PanelJuego(3);
+		panelSuperior = new PanelSuperior(this);
 		
 		ventana.setLayout(new BorderLayout());
 		add(panelSuperior, BorderLayout.NORTH);
-		add(panelJuego, BorderLayout.WEST);
 		
 		
 		
@@ -31,10 +30,16 @@ public class InterfazLightsOut extends JFrame
 		this.setSize(700, 600);
 		this.setTitle("LightsOut");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.juegoIniciado = false;
 	}
 	
-	public static void agregarPanel(JPanel panelJuego) {
+	public void agregarPanel(JPanel panelJuego) {
+		this.panelJuego = panelJuego;
 		add(panelJuego, BorderLayout.WEST);
+	}
+
+	public void eliminarPanel() {
+		remove(this.panelJuego);
 	}
 	
 	public static void main(String[] args) {

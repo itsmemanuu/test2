@@ -35,12 +35,17 @@ public class PanelJuego extends JPanel implements MouseListener{
 		this.add(paneBotones, BorderLayout.CENTER);
 
     }
+
+    public PanelJuego()
+    {
+        
+    }
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        JLabel casilla = (JLabel) e.getSource();
-        System.out.println(casilla);
-        //casilla.setIcon(new ImageIcon("data/imagenes/interrogacion.png"));
+        // JLabel casilla = (JLabel) e.getSource();
+        // System.out.println(casilla);
+        // //casilla.setIcon(new ImageIcon("data/imagenes/interrogacion.png"));
 
 
         
