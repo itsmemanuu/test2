@@ -19,16 +19,18 @@ public class PanelJuego extends JPanel implements MouseListener{
     public PanelJuego(int size) {
         this.size = size;
         JPanel paneBotones = new JPanel();
-		paneBotones.setLayout(new GridLayout(size,size));
-		paneBotones.setBorder(BorderFactory.createEmptyBorder(0,10,10,10));
+		paneBotones.setLayout(new GridLayout(size,size, 10,10 ));
 		
 		JLabel casillas[][] = new JLabel[size][size];
+		
+		
 		
 		for(int i=0; i<size; i++) {
 			for(int j=0; j<size; j++) {
 				casillas[i][j] = new JLabel("M");
 				paneBotones.add(casillas[i][j]);
 				casillas[i][j].addMouseListener(this);
+				casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			}
 		}
 		

@@ -3,6 +3,8 @@ package uniandes.dpoo.taller4.Interfaz;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import uniandes.dpoo.taller4.modelo.Tablero;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -38,12 +40,15 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		
 		this.facil = new JRadioButton("Fácil");
 		facil.setBounds(75,50,100,30);
+		facil.addActionListener(this);
 		
 		this.medio = new JRadioButton("Medio");
 		medio.setBounds(75,50,100,30);
+		medio.addActionListener(this);
 		
 		this.dificil = new JRadioButton("Difícil");
 		dificil.setBounds(75,50,100,30);
+		dificil.addActionListener(this);
 		
 		ButtonGroup bg = new ButtonGroup();
 		bg.add(facil);
@@ -64,11 +69,30 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
+		if (facil.isSelected()) {
+			int cantidad = sizeTablero*sizeTablero/4;
+			Tablero iluminados = new Tablero(sizeTablero);
+			iluminados.desordenar(cantidad);
+		}
+		if (medio.isSelected()) {
+			int cantidad = sizeTablero*sizeTablero/3;
+			Tablero iluminados = new Tablero(sizeTablero);
+			iluminados.desordenar(cantidad);
+		}
+		if (dificil.isSelected()) {
+			int cantidad = sizeTablero*sizeTablero/2;
+			Tablero iluminados = new Tablero(sizeTablero);
+			iluminados.desordenar(cantidad);
+		}
 		if (e.getActionCommand().equals("Jugar")) {
+			Tablero iluminado = new Tablero(sizeTablero);
 			PanelJuego panelJuego = new PanelJuego(sizeTablero);
 			interfaz.agregarPanel(panelJuego);
 			JButton button = (JButton)e.getSource();
 			button.setText("Reiniciar");
+			
+			
 		}
 		else if (e.getActionCommand().equals("Reiniciar")) {
 			System.out.println("Reiniciar");

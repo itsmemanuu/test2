@@ -25,8 +25,6 @@ public class InterfazLightsOut extends JFrame
 		add(panelSuperior, BorderLayout.NORTH);
 		
 		
-		
-		
 		this.setSize(700, 600);
 		this.setTitle("LightsOut");
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
