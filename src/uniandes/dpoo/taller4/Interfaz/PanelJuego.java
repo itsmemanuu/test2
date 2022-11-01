@@ -16,12 +16,14 @@ public class PanelJuego extends JPanel implements MouseListener{
     private int [][] cantidades;
     private int size;
 
-    public PanelJuego(int size, boolean[][] tableroActual) {
+    public PanelJuego(int size, boolean[][] tableroActual, InterfazLightsOut interfaz) {
         this.size = size;
         JPanel paneBotones = new JPanel();
 		paneBotones.setLayout(new GridLayout(size,size, 10,10 ));
 		
 		JLabel casillas[][] = new JLabel[size][size];
+        JPanel prueba = (JPanel)new PruebaTablero(size, tableroActual);
+
 		
 		for(int i=0; i<size; i++) {
 			for(int j=0; j<size; j++) {
@@ -37,13 +39,9 @@ public class PanelJuego extends JPanel implements MouseListener{
 				casillas[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 			}
 		}
-		
-		this.add(paneBotones, BorderLayout.CENTER);
-
-    }
-
-    public PanelJuego()
-    {
+        
+		// this.add(paneBotones, BorderLayout.CENTER);
+        this.add(prueba, BorderLayout.CENTER);
         
     }
     

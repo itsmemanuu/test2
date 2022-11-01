@@ -33,6 +33,8 @@ public class InterfazLightsOut extends JFrame
 		PanelIzq botonesPanel = new PanelIzq(panelSuperior, this);
 		add(botonesPanel, BorderLayout.EAST);
 
+		
+
 	}
 	
 	public void agregarPanel(JPanel panelJuego) {

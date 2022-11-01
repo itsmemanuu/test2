@@ -50,7 +50,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             this.tablero = new Tablero(sizeTablero);
             this.tableroActual = tablero.darTablero();
             tablero.desordenar(panelSuperior.getDificultadTablero());
-			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual);
+			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual, interfaz);
 			interfaz.agregarPanel(panelJuego);
             revalidate();
             repaint();
@@ -59,12 +59,11 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             this.tablero.reiniciar();
             tableroActual = tablero.darTablero();
 			System.out.println("Reiniciar");
-			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual);
+			PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual, interfaz);
 			interfaz.agregarPanel(panelJuego);
             revalidate();
             repaint();
 		}
-        
     }
 
     @Override
@@ -73,8 +72,6 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
         
     }
     
-    
-
     /**
      * @return Tablero return the tablero
      */
@@ -130,5 +127,4 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     public void setInterfaz(InterfazLightsOut interfaz) {
         this.interfaz = interfaz;
     }
-
 }
