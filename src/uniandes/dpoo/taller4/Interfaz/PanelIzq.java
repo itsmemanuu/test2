@@ -11,7 +11,7 @@ import java.awt.event.*;
 
 public class PanelIzq extends JPanel implements ItemListener, ActionListener{
 
-    int sizeTablero = 3;
+    int sizeTablero;
     private Tablero tablero;
     private boolean[][] tableroActual;
     private PanelSuperior panelSuperior;
@@ -46,13 +46,12 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         this.sizeTablero = panelSuperior.getSizeTablero();
-        if (e.getActionCommand().equals("Nuevo")) {
+        if (e.getActionCommand().equals("Nuevo") && (sizeTablero != 0)) {
+            interfaz.eliminarTablero();
             this.tablero = new Tablero(sizeTablero);
             this.tableroActual = tablero.darTablero();
             tablero.desordenar(panelSuperior.getDificultadTablero());
-			// PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual, interfaz);
-			// interfaz.agregarPanel(panelJuego);
-            PruebaTablero prueba = new PruebaTablero(sizeTablero, tableroActual);
+            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero);
             interfaz.agregarTablero(prueba);
             revalidate();
             repaint();
@@ -60,10 +59,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
 		else if (e.getActionCommand().equals("Reiniciar") && tablero != null && tableroActual != null) {
             this.tablero.reiniciar();
             tableroActual = tablero.darTablero();
-			System.out.println("Reiniciar");
-			// PanelJuego panelJuego = new PanelJuego(sizeTablero, tableroActual, interfaz);
-			// interfaz.agregarPanel(panelJuego);
-            PruebaTablero prueba = new PruebaTablero(sizeTablero, tableroActual);
+            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero);
             interfaz.agregarTablero(prueba);
             revalidate();
             repaint();
@@ -73,7 +69,6 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     @Override
     public void itemStateChanged(ItemEvent e) {
         // TODO Auto-generated method stub
-        
     }
     
     /**

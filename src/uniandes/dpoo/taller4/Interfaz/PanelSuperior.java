@@ -18,7 +18,7 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 	private JRadioButton medio;
 	private JRadioButton dificil;
 	private InterfazLightsOut interfaz;
-	private int sizeTablero;
+	private int sizeTablero = 3;
 	private int dificultadTablero;
 	
 	/**
@@ -64,7 +64,6 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		add(medio);
 		add(dificil);
 		
-		this.sizeTablero = 3;
 		this.dificultadTablero = sizeTablero*sizeTablero/4;
 	}
 
@@ -81,7 +80,7 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		}
 	}
 
-	public  void itemStateChanged(ItemEvent e) {
+	public void itemStateChanged(ItemEvent e) {
         if (e.getSource()==comboBox) {
             String seleccionado=(String)comboBox.getSelectedItem();
 			if (seleccionado.equals("3x3")) 

@@ -11,18 +11,18 @@ import uniandes.dpoo.taller4.modelo.*;
 public class PanelJuego extends JPanel implements MouseListener{
 
     private Tablero principal;
-    private int ultima_columna;
-    private int ultima_fila;
     private int [][] cantidades;
     private int size;
 
-    public PanelJuego(int size, boolean[][] tableroActual, InterfazLightsOut interfaz) {
+    public PanelJuego(int size, Tablero principal, InterfazLightsOut interfaz) {
         this.size = size;
+        this.principal = principal;
+        boolean[][] tableroActual = principal.darTablero();
         JPanel paneBotones = new JPanel();
 		paneBotones.setLayout(new GridLayout(size,size, 10,10 ));
 		
 		JLabel casillas[][] = new JLabel[size][size];
-        JPanel prueba = (JPanel)new PruebaTablero(size, tableroActual);
+        JPanel prueba = (JPanel)new PruebaTablero(tableroActual, principal);
 
 		
 		for(int i=0; i<size; i++) {
@@ -62,8 +62,8 @@ public class PanelJuego extends JPanel implements MouseListener{
         int[] casilla = convertirCoordenadasACasilla(click_x, click_y);
         cantidades[casilla[0]][casilla[1]]++;
         principal.jugar(casilla[0], casilla[1]);
-        this.ultima_fila = casilla[0];
-        this.ultima_columna = casilla[1];
+        // this.ultima_fila = casilla[0];
+        // this.ultima_columna = casilla[1];
         repaint();
     }
 

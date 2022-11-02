@@ -15,6 +15,7 @@ public class InterfazLightsOut extends JFrame
 	private JPanel panelJuego;
 	private PanelSuperior panelSuperior;
 	private boolean juegoIniciado;
+	private PruebaTablero prueba;
 	
 	public InterfazLightsOut(RegistroTop10 registro, Tablero tablero, Top10 top) {
 		
@@ -32,9 +33,6 @@ public class InterfazLightsOut extends JFrame
 
 		PanelIzq botonesPanel = new PanelIzq(panelSuperior, this);
 		add(botonesPanel, BorderLayout.EAST);
-
-		
-
 	}
 	
 	public void agregarPanel(JPanel panelJuego) {
@@ -43,7 +41,10 @@ public class InterfazLightsOut extends JFrame
 	}
 
 	public void eliminarPanel() {
-		remove(this.panelJuego);
+		if (this.panelJuego != null)
+		{
+			remove(this.panelJuego);
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -53,6 +54,14 @@ public class InterfazLightsOut extends JFrame
 	}
 
     public void agregarTablero(PruebaTablero prueba) {
+		this.prueba = prueba;
 		add(prueba, BorderLayout.CENTER);
+    }
+
+	public void eliminarTablero() {
+		if (this.prueba != null)
+		{
+			remove(this.prueba);
+		}
     }
 }
