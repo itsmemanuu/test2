@@ -68,19 +68,19 @@ public class PruebaTablero extends JPanel implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        // TODO Auto-generated method stub   
     }
-
+    
     @Override
     public void mousePressed(MouseEvent e) {
         int click_x = e.getX();
         int click_y = e.getY();
         int[] casilla = convertirCoordenadasACasilla(click_x, click_y);
-        cantidades[casilla[0]][casilla[1]]++;
         principal.jugar(casilla[0], casilla[1]);
+        cantidades[casilla[0]][casilla[1]]++;
         this.ultima_fila = casilla[0];
         this.ultima_columna = casilla[1];
+        revalidate();
         repaint();
     }
 
@@ -111,8 +111,7 @@ public class PruebaTablero extends JPanel implements MouseListener{
         int anchoCasilla = anchoPanelTablero / ladoTablero;
         int fila = (int) (y / altoCasilla);
         int columna = (int) (x / anchoCasilla);
+        System.out.println("Fila: " + fila + " Columna: " + columna);
         return new int[] { fila, columna };
     }
-
-
 } 

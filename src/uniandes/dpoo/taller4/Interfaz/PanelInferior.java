@@ -9,15 +9,14 @@ import uniandes.dpoo.taller4.modelo.Tablero;
 import java.awt.*;
 import java.awt.event.*;
 
-public class PanelIzq extends JPanel implements ItemListener, ActionListener{
-
+public class PanelInferior extends JPanel implements ItemListener, ActionListener{
     int sizeTablero;
     private Tablero tablero;
     private boolean[][] tableroActual;
     private PanelSuperior panelSuperior;
     private InterfazLightsOut interfaz;
 
-    public PanelIzq(PanelSuperior panelSuperior, InterfazLightsOut interfaz) {
+    public PanelInferior(PanelSuperior panelSuperior, InterfazLightsOut interfaz) {
         this.interfaz = interfaz;
         this.panelSuperior = panelSuperior;
 

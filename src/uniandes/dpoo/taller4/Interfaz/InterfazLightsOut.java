@@ -1,10 +1,16 @@
 package uniandes.dpoo.taller4.Interfaz;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.awt.event.WindowAdapter;
+
+
 import javax.swing.*;
 import uniandes.dpoo.taller4.modelo.*;
 import uniandes.dpoo.taller4.Interfaz.*;
 
-public class InterfazLightsOut extends JFrame
+
+public class InterfazLightsOut extends JFrame implements WindowListener
 {
 
 	private RegistroTop10 registro;
@@ -51,6 +57,13 @@ public class InterfazLightsOut extends JFrame
 		
 		InterfazLightsOut interfaz = new InterfazLightsOut(null, null, null);
 		interfaz.setVisible(true);
+		// addWindowListener(new WindowAdapter()
+		// 	{
+		// 		public void windowClosing(WindowEvent e)
+		// 		{
+		// 			salvarTop10();
+		// 		}
+		// 	});
 	}
 
     public void agregarTablero(PruebaTablero prueba) {
@@ -64,4 +77,46 @@ public class InterfazLightsOut extends JFrame
 			remove(this.prueba);
 		}
     }
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
