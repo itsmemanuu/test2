@@ -12,9 +12,7 @@ public class PanelJuego extends JPanel{
 
 
     public PanelJuego(int size, Tablero principal, InterfazLightsOut interfaz) {
-        boolean[][] tableroActual = principal.darTablero();
-        JPanel prueba = (JPanel)new PruebaTablero(tableroActual, principal);
-        this.add(prueba, BorderLayout.CENTER);
+        
         
     }
 }

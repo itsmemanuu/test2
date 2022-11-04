@@ -37,30 +37,33 @@ public class PruebaTablero extends JPanel implements MouseListener{
 
         int widthT = getWidth();
         int heightT = getHeight();
+        int spacingX;
+        int spacingY;
+        int casilla = width/this.size;
 
         if (widthT < heightT) {
             width = widthT;
+            spacingX = 0;
+            spacingY = (heightT - (casilla*size)) / 2;
+
         }
         else {
             width = heightT;
+            spacingX = (widthT - (casilla*size)) / 2;
+            spacingY = 0;
         }
-        
-        int casilla = width/this.size;
-                
+
         for (int i = 0; i<size; i++) {
             for (int j = 0; j<size; j++) {
                 this.cantidades[i][j] = 0;
                 if (tableroActual[j][i])
                 {
-                    h.drawImage(prendido.getImage(), i*casilla, j*casilla, casilla, casilla, this );
+                    h.drawImage(prendido.getImage(), i*casilla + spacingX, j*casilla + spacingY, casilla, casilla, this);
                 }
                 else
                 {
-                    h.drawImage(apagado.getImage(), i*casilla, j*casilla, casilla, casilla, this);
+                    h.drawImage(apagado.getImage(), i*casilla + spacingX, j*casilla + spacingY, casilla, casilla, this);
                 }
-                // h.setColor(new Color(14, 0, 54));
-                // h.drawRect(i*casilla, j*casilla, casilla, casilla);
-                
             }
         }
         addMouseListener(this);
@@ -69,6 +72,12 @@ public class PruebaTablero extends JPanel implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub 
+    }
+    
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
         int click_x = e.getX();
         int click_y = e.getY();
         int[] casilla = convertirCoordenadasACasilla(click_x, click_y);
@@ -78,12 +87,6 @@ public class PruebaTablero extends JPanel implements MouseListener{
         this.ultima_columna = casilla[1];
         revalidate();
         repaint();  
-    }
-
-    
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
     }
 
     @Override
@@ -113,7 +116,6 @@ public class PruebaTablero extends JPanel implements MouseListener{
         int anchoCasilla = anchoPanelTablero / ladoTablero;
         int fila = (int) (y / altoCasilla);
         int columna = (int) (x / anchoCasilla);
-        System.out.println("Fila: " + fila + " Columna: " + columna);
         return new int[] { fila, columna };
     }
 } 

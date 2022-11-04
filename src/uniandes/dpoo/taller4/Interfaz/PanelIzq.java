@@ -20,8 +20,10 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     public PanelIzq(PanelSuperior panelSuperior, InterfazLightsOut interfaz) {
         this.interfaz = interfaz;
         this.panelSuperior = panelSuperior;
+        this.setBackground(Color.WHITE);
 
         JPanel paneBotones = new JPanel();
+        paneBotones.setBackground(Color.WHITE);
 		paneBotones.setLayout(new GridLayout(4,1, 100, 100));
 
         JButton nuevoB = new JButton("Nuevo");
@@ -50,7 +52,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             interfaz.eliminarTablero();
             this.tablero = new Tablero(sizeTablero);
             this.tableroActual = tablero.darTablero();
-            tablero.desordenar(panelSuperior.getDificultadTablero());
+            this.desordenar();
             PruebaTablero prueba = new PruebaTablero(tableroActual, tablero);
             interfaz.agregarTablero(prueba);
             revalidate();
@@ -127,4 +129,14 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     public void setInterfaz(InterfazLightsOut interfaz) {
         this.interfaz = interfaz;
     }
+
+    public void desordenar()
+    {
+        if (tablero.tableroIluminado())
+        {
+            tablero.desordenar(panelSuperior.getDificultadTablero());
+            desordenar();
+        }
+    }
+
 }

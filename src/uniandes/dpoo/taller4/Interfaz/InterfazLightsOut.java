@@ -26,10 +26,13 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 	public InterfazLightsOut(RegistroTop10 registro, Tablero tablero, Top10 top) {
 		
 		ventana = new JPanel();
+		this.setBackground(Color.WHITE);
 		panelSuperior = new PanelSuperior(this);
+		PanelInferior panelInferior = new PanelInferior(panelSuperior, this);
 		
 		ventana.setLayout(new BorderLayout());
 		add(panelSuperior, BorderLayout.NORTH);
+		add(panelInferior, BorderLayout.SOUTH);
 		
 		
 		this.setSize(700, 600);

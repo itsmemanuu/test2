@@ -28,26 +28,31 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		this.interfaz = interfaz;
 		
 		this.size = new JLabel("Tamaño: ");
-		size.setBorder(new LineBorder(Color.DARK_GRAY));
+		size.setBackground(Color.WHITE);
 		
 		this.comboBox = new JComboBox<String>();
-		comboBox.setBounds(10,10,80,20);
+		comboBox.setBackground(Color.WHITE);
 		comboBox.addItem("3x3");
 		comboBox.addItem("5x5");
 		comboBox.addItem("8x8");
+		comboBox.setBounds(10,10,100,20);
 		comboBox.addItemListener(this);
 		
 		this.dificultad = new JLabel("Dificultad:");
+		dificultad.setBackground(Color.WHITE);
 		
 		this.facil = new JRadioButton("Fácil");
+		facil.setBackground(Color.WHITE);
 		facil.setBounds(75,50,100,30);
 		facil.addActionListener(this);
 		
 		this.medio = new JRadioButton("Medio");
+		medio.setBackground(Color.WHITE);
 		medio.setBounds(75,50,100,30);
 		medio.addActionListener(this);
 		
 		this.dificil = new JRadioButton("Difícil");
+		dificil.setBackground(Color.WHITE);
 		dificil.setBounds(75,50,100,30);
 		dificil.addActionListener(this);
 		
@@ -65,6 +70,7 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 		add(dificil);
 		
 		this.dificultadTablero = sizeTablero*sizeTablero/4;
+		this.setBackground(Color.WHITE);
 	}
 
 	public void actionPerformed(ActionEvent e) {
