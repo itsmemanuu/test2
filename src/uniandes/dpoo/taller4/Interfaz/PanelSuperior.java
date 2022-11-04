@@ -93,13 +93,14 @@ public class PanelSuperior extends JPanel implements ItemListener, ActionListene
 				sizeTablero = 5;
 				
 			}
-			else
+			else if (seleccionado.equals("8x8"))
 			{
 				sizeTablero = 8;
+				
 			}
 		}
 	}
-
+		
     public int getSizeTablero() {
         return this.sizeTablero;
     }

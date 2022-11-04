@@ -50,7 +50,7 @@ public class PruebaTablero extends JPanel implements MouseListener{
         for (int i = 0; i<size; i++) {
             for (int j = 0; j<size; j++) {
                 this.cantidades[i][j] = 0;
-                if (tableroActual[i][j])
+                if (tableroActual[j][i])
                 {
                     h.drawImage(prendido.getImage(), i*casilla, j*casilla, casilla, casilla, this );
                 }
@@ -60,19 +60,15 @@ public class PruebaTablero extends JPanel implements MouseListener{
                 }
                 // h.setColor(new Color(14, 0, 54));
                 // h.drawRect(i*casilla, j*casilla, casilla, casilla);
-                addMouseListener(this);
+                
             }
         }
-        
+        addMouseListener(this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub   
-    }
-    
-    @Override
-    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub 
         int click_x = e.getX();
         int click_y = e.getY();
         int[] casilla = convertirCoordenadasACasilla(click_x, click_y);
@@ -81,7 +77,13 @@ public class PruebaTablero extends JPanel implements MouseListener{
         this.ultima_fila = casilla[0];
         this.ultima_columna = casilla[1];
         revalidate();
-        repaint();
+        repaint();  
+    }
+
+    
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
     }
 
     @Override

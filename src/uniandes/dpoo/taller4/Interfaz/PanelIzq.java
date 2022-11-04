@@ -22,7 +22,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
         this.panelSuperior = panelSuperior;
 
         JPanel paneBotones = new JPanel();
-		paneBotones.setLayout(new GridLayout(4,1, 10, 10));
+		paneBotones.setLayout(new GridLayout(4,1, 100, 100));
 
         JButton nuevoB = new JButton("Nuevo");
 		paneBotones.add(nuevoB);

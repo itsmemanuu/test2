@@ -21,11 +21,10 @@ public class PanelInferior extends JPanel implements ItemListener, ActionListene
         this.panelSuperior = panelSuperior;
 
         JPanel paneBotones = new JPanel();
-		paneBotones.setLayout(new GridLayout(4,1, 10, 10));
+		paneBotones.setLayout(new GridLayout(1,4, 0, 10));
 
-        JButton nuevoB = new JButton("Nuevo");
+        JLabel nuevoB = new JLabel("Jugadas:");
 		paneBotones.add(nuevoB);
-		nuevoB.addActionListener(this);
 
         JButton reiniciarB = new JButton("Reiniciar");
 		paneBotones.add(reiniciarB);
