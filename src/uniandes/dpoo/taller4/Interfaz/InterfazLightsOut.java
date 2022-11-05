@@ -33,7 +33,11 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		ventana.setLayout(new BorderLayout());
 		add(panelSuperior, BorderLayout.NORTH);
 		add(panelInferior, BorderLayout.SOUTH);
-		
+
+		JPanel temp = new JPanel();
+		temp.setBackground(Color.WHITE);
+
+		add(temp, BorderLayout.CENTER);
 		
 		this.setSize(700, 600);
 		this.setTitle("LightsOut");
