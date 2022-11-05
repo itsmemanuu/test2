@@ -84,6 +84,14 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 			remove(this.prueba);
 		}
     }
+	
+	public JPanel getVentana() {
+		return ventana;
+	}
+
+	public Top10 getTop() {
+		return top;
+	}
 
 	@Override
 	public void windowOpened(WindowEvent e) {

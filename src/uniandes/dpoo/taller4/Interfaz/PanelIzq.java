@@ -67,8 +67,34 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             revalidate();
             repaint();
 		}
+        
+		else if (e.getActionCommand().equals("Top 10"))  {
+						DialogTop10();
+		}
+	}
+    
+    
+    public void DialogTop10() {
+    	JFrame f = new JFrame(); 
+ 		JDialog d = new JDialog(f, "A", false);
+ 		d.setLayout(new BorderLayout());
+ 		DefaultListModel<String> l1 = new DefaultListModel<>();
+ 		if (interfaz.getTop().darRegistros() != null) {
+	 		Collection<RegistroTop10> collection = interfaz.getTop().darRegistros();
+	 		for (RegistroTop10 s: collection) {
+	 			if (s == null) {
+	 				l1.addElement("XXX ---");
+	 			} else {
+	 				l1.addElement(s.toString());
+	 			}
+ 			System.out.println(s);
+	 		}
+ 		} else {
+ 			l1.addElement("XXX ---");
+ 		}
+ 		JList<String> list = new JList<>(l1);
+ 		f.add(list);
     }
-
     @Override
     public void itemStateChanged(ItemEvent e) {
         // TODO Auto-generated method stub
