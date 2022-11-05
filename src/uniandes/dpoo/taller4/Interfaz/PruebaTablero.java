@@ -21,12 +21,14 @@ public class PruebaTablero extends JPanel implements MouseListener{
     private int ultima_columna;
     private int ultima_fila;
     private Tablero principal;
+    private Top10 top;
 
     PruebaTablero(boolean[][] tableroActual, Tablero principal) {
         this.size = principal.darTablero().length;
         this.tableroActual = tableroActual;
         this.principal = principal;
         this.cantidades = new int[size][size];
+        this.top = new Top10();
     }
 
     public void paintComponent(Graphics h) {
@@ -69,6 +71,24 @@ public class PruebaTablero extends JPanel implements MouseListener{
         addMouseListener(this);
     }
 
+    public void optionPaneWin() {
+        
+        if (principal.tableroIluminado() == false)
+        {
+            String nombre = JOptionPane.showInputDialog(null, "Felicidades, has ganado el juego ¿Cuál es tu nombre?", "Lights Out", JOptionPane.QUESTION_MESSAGE);
+            if (nombre != null)
+            {
+                int puntaje= principal.calcularPuntaje();
+                System.out.println(puntaje);
+                if (top.esTop10(puntaje) == true);
+                {
+                    top.agregarRegistro(nombre, puntaje);
+                }
+            }
+        //tiene algo raro 
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         // TODO Auto-generated method stub 
@@ -87,6 +107,7 @@ public class PruebaTablero extends JPanel implements MouseListener{
         this.ultima_columna = casilla[1];
         revalidate();
         repaint();  
+        optionPaneWin();
     }
 
     @Override
