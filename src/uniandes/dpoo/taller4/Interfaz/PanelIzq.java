@@ -18,10 +18,12 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     private boolean[][] tableroActual;
     private PanelSuperior panelSuperior;
     private InterfazLightsOut interfaz;
+    private PanelInferior panelInferior;
 
-    public PanelIzq(PanelSuperior panelSuperior, InterfazLightsOut interfaz) {
+    public PanelIzq(PanelSuperior panelSuperior, InterfazLightsOut interfaz, PanelInferior panelInferior) {
         this.interfaz = interfaz;
         this.panelSuperior = panelSuperior;
+        this.panelInferior = panelInferior;
         this.setBackground(Color.WHITE);
 
         JPanel paneBotones = new JPanel();
@@ -55,7 +57,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             this.tablero = new Tablero(sizeTablero);
             this.tableroActual = tablero.darTablero();
             this.desordenar();
-            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero);
+            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero, panelInferior);
             interfaz.agregarTablero(prueba);
             revalidate();
             repaint();
@@ -64,7 +66,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             interfaz.eliminarTablero();
             this.tablero.reiniciar();
             tableroActual = tablero.darTablero();
-            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero);
+            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero, panelInferior);
             interfaz.agregarTablero(prueba);
             revalidate();
             repaint();

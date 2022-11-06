@@ -15,8 +15,9 @@ public class PanelInferior extends JPanel{
     private boolean[][] tableroActual;
     private PanelSuperior panelSuperior;
     private InterfazLightsOut interfaz;
+    private  JLabel jugadas;
 
-    public PanelInferior(PanelSuperior panelSuperior, InterfazLightsOut interfaz) {
+    public PanelInferior(PanelSuperior panelSuperior, InterfazLightsOut interfaz, PruebaTablero prueba) {
         this.interfaz = interfaz;
         this.panelSuperior = panelSuperior;
 
@@ -29,15 +30,21 @@ public class PanelInferior extends JPanel{
         JLabel nuevoB = new JLabel("Jugadas:");
 		paneLbl.add(nuevoB);
 
-        JLabel reiniciarB = new JLabel("Reiniciar");
-		paneLbl.add(reiniciarB);
+        jugadas = new JLabel("0");
+		paneLbl.add(jugadas);
 
-        JLabel top10B = new JLabel("Top 10");
+        JLabel top10B = new JLabel("Jugador:");
 		paneLbl.add(top10B);
 
-        JLabel jugadorB = new JLabel("Cambiar Jugador");
+        JLabel jugadorB = new JLabel("");
 		paneLbl.add(jugadorB);
 
         this.add(paneLbl, BorderLayout.CENTER);
+    }
+
+    public void actualizarJugadas(int contador)
+    {
+        String contString = String.valueOf(contador);
+        jugadas.setText(contString);
     }
 }

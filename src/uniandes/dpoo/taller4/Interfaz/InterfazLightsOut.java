@@ -34,10 +34,11 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		ventana = new JPanel();
 		this.setBackground(Color.WHITE);
 		panelSuperior = new PanelSuperior(this);
-		PanelInferior panelInferior = new PanelInferior(panelSuperior, this);
 		
 		ventana.setLayout(new BorderLayout());
 		add(panelSuperior, BorderLayout.NORTH);
+		
+		PanelInferior panelInferior = new PanelInferior(panelSuperior, this, null);
 		add(panelInferior, BorderLayout.SOUTH);
 
 		JPanel temp = new JPanel();
@@ -50,7 +51,7 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.juegoIniciado = false;
 
-		PanelIzq botonesPanel = new PanelIzq(panelSuperior, this);
+		PanelIzq botonesPanel = new PanelIzq(panelSuperior, this, panelInferior);
 		add(botonesPanel, BorderLayout.EAST);
 		f.add(ventana);
 	}
@@ -147,4 +148,103 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		// TODO Auto-generated method stub
 		
 	}
+
+    /**
+     * @return RegistroTop10 return the registro
+     */
+    public RegistroTop10 getRegistro() {
+        return registro;
+    }
+
+    /**
+     * @param registro the registro to set
+     */
+    public void setRegistro(RegistroTop10 registro) {
+        this.registro = registro;
+    }
+
+    /**
+     * @return Tablero return the tablero
+     */
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    /**
+     * @param tablero the tablero to set
+     */
+    public void setTablero(Tablero tablero) {
+        this.tablero = tablero;
+    }
+
+    /**
+     * @param top the top to set
+     */
+    public void setTop(Top10 top) {
+        this.top = top;
+    }
+
+    /**
+     * @param ventana the ventana to set
+     */
+    public void setVentana(JPanel ventana) {
+        this.ventana = ventana;
+    }
+
+    /**
+     * @return JPanel return the panelJuego
+     */
+    public JPanel getPanelJuego() {
+        return panelJuego;
+    }
+
+    /**
+     * @param panelJuego the panelJuego to set
+     */
+    public void setPanelJuego(JPanel panelJuego) {
+        this.panelJuego = panelJuego;
+    }
+
+    /**
+     * @return PanelSuperior return the panelSuperior
+     */
+    public PanelSuperior getPanelSuperior() {
+        return panelSuperior;
+    }
+
+    /**
+     * @param panelSuperior the panelSuperior to set
+     */
+    public void setPanelSuperior(PanelSuperior panelSuperior) {
+        this.panelSuperior = panelSuperior;
+    }
+
+    /**
+     * @return boolean return the juegoIniciado
+     */
+    public boolean isJuegoIniciado() {
+        return juegoIniciado;
+    }
+
+    /**
+     * @param juegoIniciado the juegoIniciado to set
+     */
+    public void setJuegoIniciado(boolean juegoIniciado) {
+        this.juegoIniciado = juegoIniciado;
+    }
+
+    /**
+     * @return PruebaTablero return the prueba
+     */
+    public PruebaTablero getPrueba() {
+        return prueba;
+    }
+
+    /**
+     * @param prueba the prueba to set
+     */
+    public void setPrueba(PruebaTablero prueba) {
+        this.prueba = prueba;
+    }
+
 }

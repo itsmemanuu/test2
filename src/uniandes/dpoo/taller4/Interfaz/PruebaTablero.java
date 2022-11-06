@@ -2,11 +2,13 @@ package uniandes.dpoo.taller4.Interfaz;
 
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.*;
 
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Component.*;
 
 
 import uniandes.dpoo.taller4.modelo.*;
@@ -22,13 +24,15 @@ public class PruebaTablero extends JPanel implements MouseListener{
     private int ultima_fila;
     private Tablero principal;
     private Top10 top;
+    private PanelInferior panelInferior;
 
-    PruebaTablero(boolean[][] tableroActual, Tablero principal) {
+    PruebaTablero(boolean[][] tableroActual, Tablero principal, PanelInferior panelInferior) {
         this.size = principal.darTablero().length;
         this.tableroActual = tableroActual;
         this.principal = principal;
         this.cantidades = new int[size][size];
         this.top = new Top10();
+        this.panelInferior = panelInferior;
         addMouseListener(this);
     }
 
@@ -97,7 +101,6 @@ public class PruebaTablero extends JPanel implements MouseListener{
     
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
         int click_x = e.getX();
         int click_y = e.getY();
         int[] casilla = convertirCoordenadasACasilla(click_x, click_y);
@@ -105,6 +108,7 @@ public class PruebaTablero extends JPanel implements MouseListener{
         cantidades[casilla[0]][casilla[1]]++;
         this.ultima_fila = casilla[0];
         this.ultima_columna = casilla[1];
+        panelInferior.actualizarJugadas(principal.darJugadas());
         revalidate();
         repaint();  
         optionPaneWin();
@@ -139,4 +143,102 @@ public class PruebaTablero extends JPanel implements MouseListener{
         int columna = (int) (x / anchoCasilla);
         return new int[] { fila, columna };
     }
-} 
+
+    /**
+     * @param size the size to set
+     */
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    /**
+     * @param width the width to set
+     */
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    /**
+     * @return boolean[][] return the tableroActual
+     */
+    public boolean[][] getTableroActual() {
+        return tableroActual;
+    }
+
+    /**
+     * @param tableroActual the tableroActual to set
+     */
+    public void setTableroActual(boolean[][] tableroActual) {
+        this.tableroActual = tableroActual;
+    }
+
+    /**
+     * @return int[][] return the cantidades
+     */
+    public int[][] getCantidades() {
+        return cantidades;
+    }
+
+    /**
+     * @param cantidades the cantidades to set
+     */
+    public void setCantidades(int[][] cantidades) {
+        this.cantidades = cantidades;
+    }
+
+    /**
+     * @return int return the ultima_columna
+     */
+    public int getUltima_columna() {
+        return ultima_columna;
+    }
+
+    /**
+     * @param ultima_columna the ultima_columna to set
+     */
+    public void setUltima_columna(int ultima_columna) {
+        this.ultima_columna = ultima_columna;
+    }
+
+    /**
+     * @return int return the ultima_fila
+     */
+    public int getUltima_fila() {
+        return ultima_fila;
+    }
+
+    /**
+     * @param ultima_fila the ultima_fila to set
+     */
+    public void setUltima_fila(int ultima_fila) {
+        this.ultima_fila = ultima_fila;
+    }
+
+    /**
+     * @return Tablero return the principal
+     */
+    public Tablero getPrincipal() {
+        return principal;
+    }
+
+    /**
+     * @param principal the principal to set
+     */
+    public void setPrincipal(Tablero principal) {
+        this.principal = principal;
+    }
+
+    /**
+     * @return Top10 return the top
+     */
+    public Top10 getTop() {
+        return top;
+    }
+
+    /**
+     * @param top the top to set
+     */
+    public void setTop(Top10 top) {
+        this.top = top;
+    }
+}
