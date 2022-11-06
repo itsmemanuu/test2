@@ -93,7 +93,6 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
 	 			if (s == null) {
 	 				l1.addElement("XXX ---");
 	 			} else {
-	 				l1.addElement("Esta funcionando");
 	 				l1.addElement(s.toString());
 	 			}
 	 		}

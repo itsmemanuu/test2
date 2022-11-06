@@ -83,7 +83,6 @@ public class PruebaTablero extends JPanel implements MouseListener{
             if (nombre != null)
             {
                 int puntaje = principal.calcularPuntaje();
-                System.out.println(puntaje);
                 if (top.esTop10(puntaje) == true);
                 {
                     top.agregarRegistro(nombre, puntaje);
