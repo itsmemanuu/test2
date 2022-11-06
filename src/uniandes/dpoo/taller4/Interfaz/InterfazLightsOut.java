@@ -17,6 +17,7 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 	private Tablero tablero;
 	private Top10 top;
 	
+	private JFrame f;
 	private JPanel ventana;
 	private JPanel panelJuego;
 	private PanelSuperior panelSuperior;
@@ -29,6 +30,7 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		this.tablero = tablero;
 		this.top = top;
 		
+		JFrame f = new JFrame();
 		ventana = new JPanel();
 		this.setBackground(Color.WHITE);
 		panelSuperior = new PanelSuperior(this);
@@ -50,6 +52,7 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 
 		PanelIzq botonesPanel = new PanelIzq(panelSuperior, this);
 		add(botonesPanel, BorderLayout.EAST);
+		f.add(ventana);
 	}
 	
 	public void agregarPanel(JPanel panelJuego) {
@@ -95,6 +98,12 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 
 	public Top10 getTop() {
 		return top;
+	}
+	
+	
+
+	public JFrame getF() {
+		return f;
 	}
 
 	@Override
