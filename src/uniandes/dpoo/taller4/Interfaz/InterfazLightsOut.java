@@ -24,6 +24,10 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 	private PruebaTablero prueba;
 	
 	public InterfazLightsOut(RegistroTop10 registro, Tablero tablero, Top10 top) {
+
+		this.registro = registro;
+		this.tablero = tablero;
+		this.top = top;
 		
 		ventana = new JPanel();
 		this.setBackground(Color.WHITE);
@@ -62,7 +66,7 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 	
 	public static void main(String[] args) {
 		
-		InterfazLightsOut interfaz = new InterfazLightsOut(null, null, null);
+		InterfazLightsOut interfaz = new InterfazLightsOut(null, null, new Top10());
 		interfaz.setVisible(true);
 		// addWindowListener(new WindowAdapter()
 		// 	{
