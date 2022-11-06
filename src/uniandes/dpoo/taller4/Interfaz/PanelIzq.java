@@ -53,11 +53,12 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
     public void actionPerformed(ActionEvent e) {
         this.sizeTablero = panelSuperior.getSizeTablero();
         if (e.getActionCommand().equals("Nuevo") && (sizeTablero != 0)) {
+            panelInferior.actualizarJugadas(0);
             interfaz.eliminarTablero();
             this.tablero = new Tablero(sizeTablero);
             this.tableroActual = tablero.darTablero();
             this.desordenar();
-            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero, panelInferior);
+            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero, panelInferior, interfaz.getTop());
             interfaz.agregarTablero(prueba);
             revalidate();
             repaint();
@@ -66,7 +67,7 @@ public class PanelIzq extends JPanel implements ItemListener, ActionListener{
             interfaz.eliminarTablero();
             this.tablero.reiniciar();
             tableroActual = tablero.darTablero();
-            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero, panelInferior);
+            PruebaTablero prueba = new PruebaTablero(tableroActual, tablero, panelInferior, interfaz.getTop());
             interfaz.agregarTablero(prueba);
             revalidate();
             repaint();

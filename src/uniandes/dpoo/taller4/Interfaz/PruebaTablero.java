@@ -26,12 +26,12 @@ public class PruebaTablero extends JPanel implements MouseListener{
     private Top10 top;
     private PanelInferior panelInferior;
 
-    PruebaTablero(boolean[][] tableroActual, Tablero principal, PanelInferior panelInferior) {
+    PruebaTablero(boolean[][] tableroActual, Tablero principal, PanelInferior panelInferior, Top10 top) {
         this.size = principal.darTablero().length;
         this.tableroActual = tableroActual;
         this.principal = principal;
         this.cantidades = new int[size][size];
-        this.top = new Top10();
+        this.top = top;
         this.panelInferior = panelInferior;
         addMouseListener(this);
     }
@@ -82,14 +82,13 @@ public class PruebaTablero extends JPanel implements MouseListener{
             String nombre = JOptionPane.showInputDialog(null, "Felicidades, has ganado el juego ¿Cuál es tu nombre?", "Lights Out", JOptionPane.QUESTION_MESSAGE);
             if (nombre != null)
             {
-                int puntaje= principal.calcularPuntaje();
+                int puntaje = principal.calcularPuntaje();
                 System.out.println(puntaje);
                 if (top.esTop10(puntaje) == true);
                 {
                     top.agregarRegistro(nombre, puntaje);
                 }
             }
-        //tiene algo raro 
         }
     }
 

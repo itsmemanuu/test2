@@ -27,13 +27,13 @@ public class PanelInferior extends JPanel{
     
 		paneLbl.setLayout(new GridLayout(1,4, 0, 10));
 
-        JLabel nuevoB = new JLabel("Jugadas:");
+        JLabel nuevoB = new JLabel("Jugadas: ");
 		paneLbl.add(nuevoB);
 
         jugadas = new JLabel("0");
 		paneLbl.add(jugadas);
 
-        JLabel top10B = new JLabel("Jugador:");
+        JLabel top10B = new JLabel("Jugador: ");
 		paneLbl.add(top10B);
 
         JLabel jugadorB = new JLabel("");
