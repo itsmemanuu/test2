@@ -29,6 +29,7 @@ public class PruebaTablero extends JPanel implements MouseListener{
         this.principal = principal;
         this.cantidades = new int[size][size];
         this.top = new Top10();
+        addMouseListener(this);
     }
 
     public void paintComponent(Graphics h) {
@@ -68,12 +69,11 @@ public class PruebaTablero extends JPanel implements MouseListener{
                 }
             }
         }
-        addMouseListener(this);
     }
 
     public void optionPaneWin() {
         
-        if (principal.tableroIluminado() == false)
+        if (principal.tableroIluminado())
         {
             String nombre = JOptionPane.showInputDialog(null, "Felicidades, has ganado el juego ¿Cuál es tu nombre?", "Lights Out", JOptionPane.QUESTION_MESSAGE);
             if (nombre != null)

@@ -4,10 +4,12 @@ import uniandes.dpoo.taller4.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import uniandes.dpoo.taller4.modelo.RegistroTop10;
 import uniandes.dpoo.taller4.modelo.Tablero;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Collection;
 
 public class PanelIzq extends JPanel implements ItemListener, ActionListener{
 
