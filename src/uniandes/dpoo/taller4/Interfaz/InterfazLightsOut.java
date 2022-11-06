@@ -19,7 +19,6 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 	
 	private JFrame f;
 	private JPanel ventana;
-	private JPanel panelJuego;
 	private PanelSuperior panelSuperior;
 	private boolean juegoIniciado;
 	private PruebaTablero prueba;
@@ -56,18 +55,6 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		f.add(ventana);
 	}
 	
-	public void agregarPanel(JPanel panelJuego) {
-		this.panelJuego = panelJuego;
-		add(panelJuego, BorderLayout.CENTER);
-	}
-
-	public void eliminarPanel() {
-		if (this.panelJuego != null)
-		{
-			remove(this.panelJuego);
-		}
-	}
-	
 	public static void main(String[] args) {
 		
 		InterfazLightsOut interfaz = new InterfazLightsOut(null, null, new Top10());
@@ -101,8 +88,6 @@ public class InterfazLightsOut extends JFrame implements WindowListener
 		return top;
 	}
 	
-	
-
 	public JFrame getF() {
 		return f;
 	}
@@ -190,21 +175,6 @@ public class InterfazLightsOut extends JFrame implements WindowListener
     public void setVentana(JPanel ventana) {
         this.ventana = ventana;
     }
-
-    /**
-     * @return JPanel return the panelJuego
-     */
-    public JPanel getPanelJuego() {
-        return panelJuego;
-    }
-
-    /**
-     * @param panelJuego the panelJuego to set
-     */
-    public void setPanelJuego(JPanel panelJuego) {
-        this.panelJuego = panelJuego;
-    }
-
     /**
      * @return PanelSuperior return the panelSuperior
      */
