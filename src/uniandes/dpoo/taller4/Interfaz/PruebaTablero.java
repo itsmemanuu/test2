@@ -77,7 +77,7 @@ public class PruebaTablero extends JPanel implements MouseListener{
 
     public void optionPaneWin() {
         
-        if (principal.tableroIluminado())
+        if (principal.tableroIluminado()==true)
         {
             String nombre = JOptionPane.showInputDialog(null, "Felicidades, has ganado el juego ¿Cuál es tu nombre?", "Lights Out", JOptionPane.QUESTION_MESSAGE);
             if (nombre != null)
