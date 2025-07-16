@@ -1,0 +1,34 @@
+name: Folder Contributions Report
+
+on:
+  workflow_dispatch:
+
+jobs:
+  count-lines:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Count Lines Added by Contributor in Folder
+        run: |
+          FOLDER="src" # Change this to your folder
+          echo "Calculating lines added in folder: $FOLDER"
+          
+          git log --format='%aN' -- $FOLDER | sort | uniq > contributors.txt
+          
+          echo "Lines added by contributor in $FOLDER:" > report.txt
+          
+          while read contributor; do
+              count=$(git log --author="$contributor" --pretty=tformat: --numstat -- $FOLDER | awk '{added+=$1} END {print added}')
+              echo "$contributor: $count lines added" >> report.txt
+          done < contributors.txt
+          
+          cat report.txt
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: folder-contribution-report
+          path: report.txt
