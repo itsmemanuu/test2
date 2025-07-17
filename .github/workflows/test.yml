@@ -30,11 +30,13 @@ jobs:
           FOLDER="src" # Change this to your folder
           echo "Analyzing folder: $FOLDER"
 
+          REPO_NAME=$(basename `git rev-parse --show-toplevel`)
           git log --format='%aN <%aE>' -- $FOLDER | sort | uniq > contributors.txt
 
           TOTAL=$(git log --pretty=tformat: --numstat -- $FOLDER | awk '{added+=$1} END {print added}')
 
           echo "{" > report.json
+          echo "  \"repo\": \"$REPO_NAME\"," >> report.json
           echo "  \"folder\": \"$FOLDER\"," >> report.json
           echo "  \"total_additions\": $TOTAL," >> report.json
           echo "  \"contributors\": [" >> report.json
