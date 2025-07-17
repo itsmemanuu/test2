@@ -1,13 +1,18 @@
 import gspread
 import json
 import os
+import json
 
-# Load service account credentials
 creds_json = json.loads(os.environ["GOOGLE_SERVICE_ACCOUNT_JSON"])
 gc = gspread.service_account_from_dict(creds_json)
 
-# Open the Google Sheet by name (or by URL or key)
 sheet = gc.open("testWorkflow").sheet1
 
-# Example: Append a row
-sheet.append_row(["✅ Update from GitHub Actions!", "Works!"])
+with open("report.json", "r") as f:
+	data = json.load(f)
+ 
+formatted = [f"{c['name']}, {c['percent']}" for c in data['contributors']]
+
+formatted.insert(0, data['repo'])
+
+sheet.append_row(formatted)
