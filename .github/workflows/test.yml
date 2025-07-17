@@ -1,44 +1,63 @@
 name: Folder Contributions Report
 
 on:
-  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   count-lines:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install gspread google-auth
+      
       - name: Checkout Repo (Full History)
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # fetch full commit history
+          fetch-depth: 0
 
       - name: Count Lines Added by Contributor in Folder
         run: |
           FOLDER="src" # Change this to your folder
           echo "Analyzing folder: $FOLDER"
 
-          # Get contributors (name + email for accuracy)
           git log --format='%aN <%aE>' -- $FOLDER | sort | uniq > contributors.txt
 
-          # Count total additions
           TOTAL=$(git log --pretty=tformat: --numstat -- $FOLDER | awk '{added+=$1} END {print added}')
 
-          echo "Total additions in $FOLDER: $TOTAL"
-          echo "Lines added by contributor in $FOLDER:" > report.txt
-          echo "" >> report.txt
+          echo "{" > report.json
+          echo "  \"folder\": \"$FOLDER\"," >> report.json
+          echo "  \"total_additions\": $TOTAL," >> report.json
+          echo "  \"contributors\": [" >> report.json
 
+          first=1
           while read contributor; do
-              count=$(git log --author="$contributor" --pretty=tformat: --numstat -- $FOLDER | awk '{added+=$1} END {print added}')
-              percent=$(awk "BEGIN {printf \"%.2f\", ($count/$TOTAL)*100}")
-              echo "$contributor: $count lines added ($percent%)" | tee -a report.txt
+            count=$(git log --author="$contributor" --pretty=tformat: --numstat -- $FOLDER | awk '{added+=$1} END {print added}')
+            percent=$(awk "BEGIN {printf \"%.2f\", ($count/$TOTAL)*100}")
+            if [ $first -eq 0 ]; then
+              echo "," >> report.json
+            fi
+            echo "    {\"name\": \"$contributor\", \"lines_added\": $count, \"percent\": $percent}" >> report.json
+            first=0
           done < contributors.txt
 
-          echo ""
-          echo "Full report saved in report.txt"
+          echo "  ]" >> report.json
+          echo "}" >> report.json
+
+          echo "Full report saved in report.json"
 
       - name: Upload Contribution Report
         uses: actions/upload-artifact@v4
         with:
           name: folder-contribution-report
-          path: report.txt
+          path: report.json
