@@ -1,9 +1,8 @@
 name: Folder Contributions Report
 
 on:
-  release:
-    types: [published]
-
+  workflow_dispatch
+  
 jobs:
   count-lines:
     runs-on: ubuntu-latest
