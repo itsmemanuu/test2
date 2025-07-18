@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install gspread google-auth
+          pip install requests
       
       - name: Checkout Repo (Full History)
         uses: actions/checkout@v4
@@ -58,8 +58,6 @@ jobs:
 
           echo "Full report saved in report.json"
 
-      - name: Write to Google Sheet
-        env:
-          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+      - name: Call endpoint to Publish
         run: |
-          python write_to_sheet.py
+          python upStats.py
