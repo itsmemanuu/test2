@@ -35,9 +35,10 @@ jobs:
           git log --format='%aN <%aE>' -- $FOLDER | sort | uniq > contributors.txt
 
           TOTAL=$(git log --pretty=tformat: --numstat -- $FOLDER | awk '{added+=$1} END {print added}')
-
+          ORG_NAME=$(basename $(git config --get remote.origin.url | sed -E 's/.*[:\/]([^\/]+)\/[^\/]+(\.git)?$/\1/'))
+          
           echo "{" > report.json
-          echo "  \"repo\": \"$REPO_NAME\"," >> report.json
+          echo "  \"org\": \"$ORG_NAME\"," >> report.json
           echo "  \"folder\": \"$FOLDER\"," >> report.json
           echo "  \"total_additions\": $TOTAL," >> report.json
           echo "  \"contributors\": [" >> report.json
